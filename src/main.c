@@ -18,20 +18,16 @@ int main(void) {
 
     float bias[] = {2,3,0.5};
 
-    MATRIX almost_out = multiply(input, 3, 4, weights_t, 4, 3);
+    MATRIX out = multiply(input, 3, 4, weights_t, 4, 3);
     
     freeMtx(weights_t, 4);
     freeMtx(input, 3);
     
-    MATRIX output = newMtx(3, 3);
 
-    for (int i = 0; i < 3; i++) {
-        output[i] = add(almost_out[i], bias, 3);
-    }
-    freeMtx(almost_out, 3);
+    vAdd(out, 3, 4, bias, 3);
     
-    printMtx(output, 3, 3);
-    free(output);
+    printMtx(out, 3, 3);
+    free(out);
 
     return 0;
 }

@@ -110,6 +110,16 @@ VECTOR col(MATRIX m, int r, int c, int col_index) {
     return v;
 }
 
+void vAdd(MATRIX m, int r, int c, VECTOR v, int n) {
+    assert(r == n);
+    
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            m[i][j] = m[i][j] + v[j];
+        }
+    }
+}
+
 MATRIX transpose(MATRIX m, int r, int c) {
     MATRIX mt = newMtx(c, r);
 
