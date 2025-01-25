@@ -12,22 +12,23 @@ int main(void) {
     float weights_arr[3][4] = {{0.2,0.8,-0.5,1},
                                {0.5,-0.91,0.26,-0.5},
                                {-0.26,-0.27,0.17,0.87}};
-    MATRIX weights = setMtx(3, 4, weights_arr);
-    MATRIX weights_t = transpose(weights, 3, 4);
-    freeMtx(weights, 3);
-
     float bias[] = {2,3,0.5};
 
-    MATRIX out = multiply(input, 3, 4, weights_t, 4, 3);
-    
-    freeMtx(weights_t, 4);
-    freeMtx(input, 3);
-    
+    MATRIX weights = setMtx(3, 4, weights_arr);
+    MATRIX temp = transpose(weights, 3, 4);
 
-    vAdd(out, 3, 4, bias, 3);
+    freeMtx(weights, 3);
+    weights = temp;
+
+    MATRIX out = multiply(input, 3, 4, weights, 4, 3);
+    
+    freeMtx(input, 3);
+    freeMtx(weights, 4);
+
+    vAdd(out, 3, 3, bias, 3);
     
     printMtx(out, 3, 3);
-    free(out);
+    freeMtx(out, 3);
 
     return 0;
 }

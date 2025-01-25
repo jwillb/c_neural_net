@@ -12,9 +12,10 @@ void printVec(VECTOR v, int n);
 
 MATRIX newMtx(int r, int c);
 MATRIX setMtx(int r, int c, float array[r][c]);
-void printMtx(MATRIX mtx, int r, int c);
-void freeMtx(MATRIX mtx, int r);
-VECTOR col(MATRIX mtx, int r, int c, int col_index);
+void printMtx(MATRIX m, int r, int c);
+void freeMtx(MATRIX m, int r);
+VECTOR col(MATRIX m, int r, int c, int col_index);
 void vAdd(MATRIX m, int r, int c, VECTOR v, int n);
-MATRIX multiply(MATRIX mtx1, int r1, int c1, MATRIX mtx2, int r2, int c2);
-MATRIX transpose(MATRIX mtx, int r, int c);
+MATRIX transpose(MATRIX m, int r, int c);
+MATRIX multiply(MATRIX m1, int r1, int c1, MATRIX m2, int r2, int c2);
+
