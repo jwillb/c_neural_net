@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <time.h>
 
 #include "fvector.h"
+
+#undef RAND_MAX
+#define RAND_MAX 100
 
 VECTOR newVec(int n) {
     VECTOR v = calloc(n, sizeof(float));
@@ -59,6 +63,17 @@ void printVec(VECTOR v, int n) {
     printf(">\n");
 }
 
+/*VECTOR randVec(int n) {
+    VECTOR v = malloc(n * sizeof(float));
+    assert(v);
+
+    for (int i = 0; i < n; i++) {
+        v[i] = rand();
+    }
+
+    return v;
+}*/
+
 MATRIX newMtx(int r, int c) {
     MATRIX m = malloc(r * sizeof(float*));
     assert(m);
@@ -66,6 +81,17 @@ MATRIX newMtx(int r, int c) {
     for (int i = 0; i < r; i++) {
         m[i] = calloc(c, (sizeof(float)));
         assert(m[i]);
+    }
+    return m;
+}
+
+MATRIX randMtx(int r, int c) {
+    MATRIX m = newMtx(r, c);
+
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            m[i][j] = ((rand() % 100) + 1) * 0.01;
+        }
     }
     return m;
 }

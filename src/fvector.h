@@ -3,14 +3,19 @@
 #define VMTX(v) &v
 #define MVEC(m) *m
 
+#undef RAND_MAX
+#define RAND_MAX 100
+
 VECTOR newVec(int n);
 VECTOR setVec(int n, float array[n]);
 VECTOR add(VECTOR v1, VECTOR v2, int n);
 VECTOR subtract(VECTOR v1, VECTOR v2, int n);
 float dot(VECTOR v1, VECTOR v2, int n);
 void printVec(VECTOR v, int n);
+//VECTOR randVec(int n);
 
 MATRIX newMtx(int r, int c);
+MATRIX randMtx(int r, int c);
 MATRIX setMtx(int r, int c, float array[r][c]);
 void printMtx(MATRIX m, int r, int c);
 void freeMtx(MATRIX m, int r);

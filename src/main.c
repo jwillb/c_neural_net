@@ -1,9 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "fvector.h"
+#include "layer.h"
 
 int main(void) {
+    srand(time(NULL));
+
     MATRIX temp;
     float input_arr[3][4] = {{1,2,3,2.5},
                              {2,5,-1,2},
@@ -48,6 +52,14 @@ int main(void) {
     
     printMtx(layer2_out, 3, 3);
     freeMtx(layer2_out, 3);
+
+    DenseLayer new_layer = newDenseLayer(5, 10);
+
+    printMtx(new_layer.weights, 5, 10);
+    freeMtx(weights, 5);
+
+    printVec(new_layer.biases, 10);
+    free(new_layer.biases);
 
     return 0;
 }
